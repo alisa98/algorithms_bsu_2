@@ -1,3 +1,4 @@
+import java.util.Random;
 
 public class LocalSearch {
 
@@ -55,4 +56,24 @@ public class LocalSearch {
         }
         return distance;
     }
+
+    int n=13;
+    long start = System.currentTimeMillis();
+    int[][] matrix =new int[n][n];
+
+        for (int i = 0; i < n; i++){
+        for (int j = 0; j < n; j++){
+            if (i == j){
+                matrix[i][j] = -1;
+            } else {
+                matrix[i][j] = matrix[j][i] = new Random().ints(1, 100).limit(1).findFirst().getAsInt();
+
+            }
+        }
+    }
+
+         GreedyAlgorithm greedyAlgorithm = new GreedyAlgorithm();
+        System.out.println(greedyAlgorithm.doAlgorithm(matrix) + ", " + greedyAlgorithm.getWayLength());
+        System.out.println(System.currentTimeMillis()-start+" milliseconds");
+}
 }
